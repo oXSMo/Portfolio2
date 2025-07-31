@@ -1,4 +1,4 @@
-import { useHoverSlice } from "@/store/store";
+import { useHoverSlice } from "../../store/store";
 
 function CursorHover({ children, Size }) {
   const { size, setSize } = useHoverSlice();

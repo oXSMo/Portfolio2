@@ -5,7 +5,7 @@ import Medcheck from "../../../public/images/medcheck.gif";
 import Portfolio from "../../../public/images/portfolio.gif";
 import Chat from "../../../public/images/chat.gif";
 import Fix from "../../../public/images/fixiiit.gif";
-import { useRaiseUp, useScreenSize } from "@/utils/hooks";
+import { useRaiseUp, useScreenSize } from "../../utils/hooks";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 

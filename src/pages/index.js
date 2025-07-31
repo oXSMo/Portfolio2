@@ -24,7 +24,7 @@ const SplineSans = Spline_Sans({
 });
 
 export default function Home() {
-  const { size: width, x, y } = useMousePosition(1);
+  // const { size: width, x, y } = useMousePosition(1);
 
   const isReady = useSleep(4000);
   return (
