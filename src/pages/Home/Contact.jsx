@@ -1,0 +1,93 @@
+import React, { useRef, useState } from "react";
+import { SplineClass } from "..";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+
+import CoolMarquee from "../../components/common/CoolMarquee";
+
+function Contact() {
+  const [Scale, setScale] = useState(0);
+
+  const target = useRef(null);
+  const { scrollYProgress } = useScroll({ target });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [50, 0]);
+  const opacity = useTransform(scrollYProgress, [0.9, 1], [1, 0]);
+
+  const txtScale = useTransform(scrollYProgress, [0.75, 1], [3, 1]);
+  useMotionValueEvent(txtScale, "change", (latest) => setScale(latest));
+
+  return (
+    <>
+      <main ref={target} className="h-[400vh] mt-[-300vh] w-full">
+        <section
+          className={`w-full grid  h-screen overflow-clip items-center  sticky top-0 z-10   text-white p-6  ${SplineClass}`}
+        >
+          {/* <div className="w-full h-full">
+          <motion.h1
+            style={{
+              scale: Scale,
+              y: (Scale - 1) * -150,
+              x: (Scale - 1) * -150,
+            }}
+            className="md:text-[9vw] text-[16vw] tracking-[-0.2vw] uppercase font-black"
+          >
+            EMAIL
+          </motion.h1>
+        </div> */}
+          <motion.div
+            style={{ scale, opacity }}
+            className={`grid grid-cols-[1fr_auto_1fr] text-5xl font-black  `}
+          >
+            <h1 className="justify-self-end">CON</h1>
+            <h1 className="w-fit">T</h1>
+            <h1 className="justify-self-start">ACT</h1>
+          </motion.div>
+        </section>
+      </main>
+      <main className="min-h-[200vh] w-full mt-[-40vh]">
+        <section className=" flex flex-col  top-0 ">
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: "100%" }}
+            transition={{ duration: 0.8 }}
+          >
+            <CoolMarquee
+              duration={17}
+              containerClassName="[mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]"
+            >
+              <div className="h-24 border-b border-t flex gap-14 items-center px-6 border-white">
+                <h1 className="text-5xl font-bold">Open To Work</h1>{" "}
+                <div className="w-6 aspect-square rounded-full bg-white" />
+              </div>
+            </CoolMarquee>
+          </motion.div>
+
+          <div className="h-full flex-1 w-full"></div>
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: "-100%" }}
+            transition={{ duration: 0.8 }}
+          >
+            <CoolMarquee
+              direction="right"
+              duration={17}
+              containerClassName="[mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]"
+            >
+              <div className="h-24 border-b border-t flex gap-14 items-center px-6 border-white">
+                <h1 className="text-5xl font-bold">Contact Me</h1>{" "}
+                <div className="w-6 aspect-square rounded-full bg-white" />
+              </div>
+            </CoolMarquee>
+          </motion.div>
+        </section>
+      </main>
+    </>
+  );
+}
+
+export default Contact;
