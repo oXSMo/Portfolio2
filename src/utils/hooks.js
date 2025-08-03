@@ -2,30 +2,43 @@ import { useHoverSlice } from "../store/store";
 import { useScroll, useTransform } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export const useMousePosition = (s) => {
+export const useMousePosition = (defaultSize) => {
   const { size, setSize } = useHoverSlice();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const rafRef = useRef(0);
+  const lastPosRef = useRef({ x: 0, y: 0 });
 
+  // Throttle mouse updates with requestAnimationFrame
   useEffect(() => {
     const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      lastPosRef.current = { x: e.clientX, y: e.clientY };
+
+      if (!rafRef.current) {
+        rafRef.current = requestAnimationFrame(() => {
+          setMousePosition(lastPosRef.current);
+          rafRef.current = 0;
+        });
+      }
     };
 
     window.addEventListener("mousemove", updateMousePosition);
-
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
-  const Hover = (Size) => ({
-    onMouseEnter: useCallback(() => {
-      setSize(Size);
-    }, []),
-    onMouseLeave: useCallback(() => {
-      setSize(s);
-    }, []),
-  });
+  // Memoized hover handlers
+  const Hover = useCallback(
+    (Size) => ({
+      onMouseEnter: () => setSize(Size),
+      onMouseLeave: () => setSize(defaultSize),
+    }),
+    [setSize, defaultSize]
+  );
+
+  console.log({mousePosition});
+  
 
   return { size, x: mousePosition.x, y: mousePosition.y, Hover };
 };

@@ -7,6 +7,8 @@ import WisdomSection from "./Home/WisdomSection";
 import BeltSection from "./Home/BeltSection";
 import EnterSection from "./Home/EnterSection";
 import Contact from "./Home/Contact";
+import { useRef } from "react";
+import Inner from "../components/layouts/Inner";
 
 const davidLibre = Noto_Serif({
   subsets: ["latin"], // Preload Latin characters
@@ -24,28 +26,32 @@ const SplineSans = Spline_Sans({
 });
 
 export default function Home() {
+  const ref = useRef(null);
+
   // const { size: width, x, y } = useMousePosition(1);
 
   const isReady = useSleep(4000);
   return (
-    <ReactLenis root>
-      <div
-        className={` ${davidLibre.className} ${
-          Libertinus.className
-        }  w-full overflow-clip ${!isReady && "h-screen !cursor-auto"}`}
-      >
-        <Navbar />
+    <Inner>
+      <ReactLenis root>
+        <div
+          className={` ${davidLibre.className} ${
+            Libertinus.className
+          }  w-full overflow-clip ${!isReady && "h-screen !cursor-auto"}`}
+        >
+          {/* <Navbar /> */}
 
-        <TopSection />
-        <WisdomSection />
-        <BeltSection />
+          <TopSection />
+          <WisdomSection />
+          <BeltSection />
 
-        <EnterSection />
+          <EnterSection />
 
-        <Contact />
-      </div>
-      <nav className="h-screen  fixed z-0 pointer-events-none  top-0  inset-[-200%_-200%] scale-y-125 opacity-15 background" />
-    </ReactLenis>
+          <Contact />
+        </div>
+        
+      </ReactLenis>
+    </Inner>
   );
 }
 

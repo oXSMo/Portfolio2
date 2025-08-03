@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import Gif from "../../../public/top.gif";
 import CursorHover from "../../components/common/CursorHover";
 import { EncryptButton } from "../../components/common/EncryptText";
-import { fadeIn } from "../../utils/motion";
 import { useRef } from "react";
 import { useRaiseUp, useScrollOpacity } from "../../utils/hooks";
 
@@ -10,11 +9,20 @@ function TopSection() {
   const target = useRef(null);
 
   const { sm, md, lg } = useRaiseUp(target, 0.5, 1, 5);
- 
 
   const opacity = useScrollOpacity(target, 0.5, 0.75, 1, 0);
+
+  const fadeIn = (duration = 0.7, delay = 0.2) => ({
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    transition: { duration, delay },
+  });
+
   return (
-    <main ref={target} className="h-screen  __className_2b7985 grid grid-rows-[70px_1fr_auto]">
+    <main
+      ref={target}
+      className="h-screen  __className_2b7985 grid grid-rows-[70px_1fr_auto]"
+    >
       <div />
       <section className="h-full relative w-96  mx-auto  grid place-content-center">
         <article className="space-y-6 scale-95 absolute pointer-events-none top-1/2 w-full [&_span]:text-[#9d9d9d] z-20 -translate-y-1/2">
@@ -22,13 +30,15 @@ function TopSection() {
             <motion.h1 style={{ y: md }} {...fadeIn(0.5, 2)}>
               Sohaib.M
             </motion.h1>
-            <motion.span
+            <motion.h2
               style={{ y: sm }}
-              {...fadeIn(0.5, 1.8)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.5 }}
               className="text-center "
             >
               ( Full-Stack )
-            </motion.span>
+            </motion.h2>
             <motion.p
               style={{ y: md }}
               {...fadeIn(0.5, 2.2)}
@@ -63,7 +73,7 @@ function TopSection() {
         </article>
         <motion.div
           initial={{ clipPath: "inset(0% 100%)" }}
-          whileInView={{
+          animate={{
             clipPath: "inset(0% 0%)",
             transition: {
               delay: 0.3,

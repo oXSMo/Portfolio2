@@ -16,11 +16,11 @@ export const textVariant = (delay) => {
   };
 };
 
-export const fadeIn = (duration, delay) => ({
+export const fadeIn = (duration = 0.7, delay, viewport = false) => ({
   initial: { opacity: 0 },
   whileInView: { opacity: 1 },
   transition: { duration, delay },
-  viewport: { once: true },
+  viewport: { once: viewport },
 });
 
 // export const slideIn = (direction, type, delay, duration) => {
