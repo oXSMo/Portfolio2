@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { SplineClass } from "..";
 import {
   motion,
   useMotionTemplate,
@@ -38,7 +37,7 @@ function EnterSection() {
   const XY = (Scale - 1) * -(screen.width > 700 ? 15 : 30);
 
   return (
-    <main className={`w-full ${SplineClass}`}>
+    <main className={`w-full font-["Spline"]`}>
       <nav
         ref={target}
         className="md:min-h-[600vh] min-h-[300vh] relative z-10"
@@ -104,7 +103,7 @@ const WhiteSection = () => {
     offset: ["start start", "end start"],
   });
 
-  const value = useTransform(scrollYProgress, [0, 0.5], [0, 50]);
+  const value = useTransform(scrollYProgress, [0.2, 0.5], [0, 50]);
   const clipPath = useMotionTemplate`inset(0 ${value}%  )`;
 
   return (

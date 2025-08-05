@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { SplineClass } from "..";
 import {
   motion,
   useMotionValueEvent,
@@ -26,7 +25,7 @@ function Contact() {
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -500]);
 
-  const scale = useTransform(scrollYProgress, [0, 0.8, 1], [50, 2, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.8, 1], [100, 2, 0]);
   const opacity = useTransform(scrollYProgress, [0.9, 1], [1, 0]);
 
   const txtScale = useTransform(scrollYProgress, [0.75, 1], [3, 1]);
@@ -37,7 +36,7 @@ function Contact() {
     <>
       <main ref={target} className="h-[400vh] mt-[-300vh] w-full">
         <section
-          className={`w-full grid  h-screen overflow-clip items-center  sticky top-0 z-10   text-white p-6  ${SplineClass}`}
+          className={`w-full grid  h-screen overflow-clip items-center  sticky top-0 z-10   text-white p-6  font-["Spline"]`}
         >
           {/* <div className="w-full h-full">
           <motion.h1
@@ -53,7 +52,7 @@ function Contact() {
         </div> */}
           <motion.div
             style={{ scale, opacity }}
-            className={`grid grid-cols-[1fr_auto_1fr] text-5xl font-black  `}
+            className={`grid grid-cols-[1fr_auto_1fr] text-5xl font-black font-sans `}
           >
             <h1 className="justify-self-end">CON</h1>
             <h1 className="w-fit">T</h1>

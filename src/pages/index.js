@@ -12,7 +12,9 @@ import Inner from "../components/layouts/Inner";
 
 const davidLibre = Noto_Serif({
   subsets: ["latin"], // Preload Latin characters
-  weight: "400", // Required: Choose from 400, 500, 700
+  weight: "400",
+  variable: "Noto",
+  // Required: Choose from 400, 500, 700
 });
 const Libertinus = Libertinus_Mono({
   subsets: ["latin"], // Preload Latin characters
@@ -22,7 +24,7 @@ const SplineSans = Spline_Sans({
   subsets: ["latin"],
   display: "swap",
 
-  variable: "--font-spline-sans",
+  variable: "Spline",
 });
 
 export default function Home() {
@@ -49,10 +51,10 @@ export default function Home() {
 
           <Contact />
         </div>
-        
       </ReactLenis>
     </Inner>
   );
 }
 
 export const SplineClass = SplineSans.className;
+export const NotoClass = davidLibre.className;

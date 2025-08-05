@@ -4,7 +4,9 @@ import Link from "next/link";
 
 function Navbar() {
   return (
-    <header className="w-full px-6 py-4 flex mix-blend-difference text-sm  justify-between fixed top-0 z-40 text-[#f4f4f4]">
+    <header
+      className={`w-full px-6 py-4 flex mix-blend-difference text-sm  justify-between fixed top-0 z-50 text-[#f4f4f4] font-["Noto"]`}
+    >
       <CursorHover Size={45}>
         <Link href="/">
           <EncryptButton

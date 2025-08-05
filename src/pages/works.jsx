@@ -1,17 +1,17 @@
 import React from "react";
 import Inner from "../components/layouts/Inner";
 import { motion } from "framer-motion";
+import TopSection from "./Works/TopSection";
+import Sarava from "./Works/Sarava";
+import White from "./Works/White";
 
 function works() {
   return (
     <Inner>
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
-        className="w-full h-screen grid place-content-center text-7xl font-black"
-      >
-        Sohaib
+      <motion.div className="">
+        <TopSection />
+        <Sarava />
+        <White /> <article className="h-screen"></article>
       </motion.div>
     </Inner>
   );
