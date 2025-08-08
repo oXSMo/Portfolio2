@@ -130,9 +130,7 @@ function Sarava() {
           )}
 
           <motion.aside
-            style={{
-              maskImage,
-            }}
+            style={{ maskImage }}
             className="w-full flex justify-center items-center h-full absolute top-0"
           >
             <motion.div

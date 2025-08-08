@@ -90,6 +90,16 @@ body {
   animation: scrollLeft 3s linear 0 infinite;
 }
 
+.scrollnone {
+  overflow: auto;
+  /* Hide default scrollbar */
+  scrollbar-width: none; /* Not fully supported yet, but helps */
+}
+
+.scrollnone::-webkit-scrollbar {
+  display: none; /* Hide scrollbar track */
+}
+
 @keyframes scrollLeft {
   to {
     left: -160px;

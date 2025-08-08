@@ -28,7 +28,7 @@ export const EncryptButton = ({
         stopScramble;
       }, 400);
     }
-  }, [isInView]);
+  }, [isInView, TxT]);
 
   const [text, setText] = useState(TxT);
 

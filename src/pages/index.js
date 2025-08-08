@@ -30,8 +30,6 @@ const SplineSans = Spline_Sans({
 export default function Home() {
   const ref = useRef(null);
 
-  // const { size: width, x, y } = useMousePosition(1);
-
   const isReady = useSleep(4000);
   return (
     <Inner>
@@ -43,7 +41,7 @@ export default function Home() {
         >
           {/* <Navbar /> */}
 
-          <TopSection />
+          <TopSection isReady={isReady} />
           <WisdomSection />
           <BeltSection />
 

@@ -5,7 +5,7 @@ import { EncryptButton } from "../../components/common/EncryptText";
 import { useRef } from "react";
 import { useRaiseUp, useScrollOpacity } from "../../utils/hooks";
 
-function TopSection() {
+function TopSection({ isReady }) {
   const target = useRef(null);
 
   const { sm, md, lg } = useRaiseUp(target, 0.5, 1, 5);
@@ -96,13 +96,18 @@ function TopSection() {
 
       <motion.div
         style={{ opacity, y: lg }}
-        className="flex gap-1 -space-x-2 items-center justify-center "
+        className="grid grid-cols-[auto_auto_auto] w-fit mx-auto items-center"
       >
-        <span>(</span>{" "}
-        <div className="w-24">
-          <EncryptButton TxT="Scroll" symbols className="text-white/50" />{" "}
+        <span>(</span>
+
+        <div className="w-28 justify-self-center text-center mx-auto">
+          <EncryptButton
+            TxT={isReady ? "Scroll" : "Loading"}
+            symbols
+            className="text-white/50 "
+          />
         </div>
-        <span>)</span>
+        <span className="justify-self-end">)</span>
       </motion.div>
     </main>
   );
